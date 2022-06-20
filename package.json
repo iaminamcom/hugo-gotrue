@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "start": "hugo --gc"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.7"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "gotrue-js": "^0.9.29"
+  }
+}

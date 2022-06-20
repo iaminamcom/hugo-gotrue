@@ -1,0 +1,13 @@
+{{- $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
+
+{{- if .Site.IsServer }}
+
+<link rel="stylesheet" href="{{($styles | fingerprint).RelPermalink }}">
+
+{{ else }}
+
+{{ printf `<style>
+  %s
+</style>` ($styles | minify | resources.PostProcess).Content }}
+
+{{ end -}}

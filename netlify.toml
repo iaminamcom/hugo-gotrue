@@ -1,0 +1,35 @@
+[build]
+publish = "public"
+command = "hugo --gc --minify;"
+
+[context.production.environment]
+HUGO_VERSION = "0.100.2"
+HUGO_ENV = "production"
+
+# headers
+[[headers]]
+for = "/*.jpg"
+  [headers.values]
+  Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.png"
+  [headers.values]
+  Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.css"
+  [headers.values]
+  Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.js"
+  [headers.values]
+  Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*"
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "no-referrer"
