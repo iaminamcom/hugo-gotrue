@@ -1,12 +1,8 @@
 module.exports = {
   theme: {
     extend: {
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "2rem",
-        },
-      },
+      colors: { purple: "#2F2E6F", violet: "#d2bedd", },
+      container: { center: true, padding: { DEFAULT: "2rem", }, },
     },
   },
   variants: {},
