@@ -4,3 +4,5 @@ node_modules
 resources/
 public
 *.lock
+# Local Netlify folder
+.netlify

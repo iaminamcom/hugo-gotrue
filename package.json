@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "hugo --gc"
+    "start": "hugo serve"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
