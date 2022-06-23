@@ -10,5 +10,5 @@ const auth = new GoTrue({
 //   .login('inamkbmail@gmail.com', 'password', true)
 //   .then((r) => console.log(`Success! Response: ${{ r }}`))
 //   .catch((error) => console.log(`Failed :( ${error}`));
-auth.confirm('Aob_8uKHeLo6CdzO0icTUg', true)
+auth.confirm(location.href.split('=')[1], true)
   .then((r) => console.log(r)).catch((err) => console.log(err));
