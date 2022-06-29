@@ -3,12 +3,19 @@ import GoTrue from 'gotrue-js';
 // Instantiate the GoTrue auth client with an optional configuration
 
 const auth = new GoTrue({
-  APIUrl: 'https://transcendent-pegasus-7ff91f/.netlify/identity',
+  APIUrl: 'https://transcendent-pegasus-7ff91f.netlify.app/.netlify/identity',
   audience: '',
   setCookie: false,
 });
-auth.login('inamkbmail@gmail.com', 'passw0rd', true)
-  .then((r) => console.log(r)).catch((e) => console.log(e));
+// auth.login('inamkbmail@gmail.com', 'passw0rd', true)
+//   .then((r) => console.log(r)).catch((e) => console.log(e));
+
+auth
+  .confirm('WF49TPhiwGGcKn-Vt4v3Rg', 'passw0rd', true)
+  .then((response) => {
+    console.log('Confirmation email sent', JSON.stringify({ response }));
+  })
+  .catch((error) => console.log(error));
 
 const center = L.latLng(51.505, -0.09);
 const zoom = 15;
