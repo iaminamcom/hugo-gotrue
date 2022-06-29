@@ -1,3 +1,15 @@
+import GoTrue from 'gotrue-js';
+
+// Instantiate the GoTrue auth client with an optional configuration
+
+const auth = new GoTrue({
+  APIUrl: 'https://transcendent-pegasus-7ff91f/.netlify/identity',
+  audience: '',
+  setCookie: false,
+});
+auth.login('inamkbmail@gmail.com', 'passw0rd', true)
+  .then((r) => console.log(r)).catch((e) => console.log(e));
+
 const center = L.latLng(51.505, -0.09);
 const zoom = 15;
 

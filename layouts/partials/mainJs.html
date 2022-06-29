@@ -5,11 +5,11 @@
 
 {{- $bunldeJS = $bunldeJS | resources.Concat "js/bundle.js" | fingerprint | js.Build}}
 
-{{/* {{- $babelConfig :="assets/js/babel.config.js" }}
+{{- $babelConfig :="assets/js/babel.config.js" }}
 {{ if .Site.IsServer}}
 {{- $bunldeJS = $bunldeJS | babel (dict "verbose" true "config" $babelConfig) -}}
 {{ else -}}
 {{- $bunldeJS = $bunldeJS | babel (dict "noComments" true "minified" true "config" $babelConfig) -}}
-{{ end -}} */}}
+{{ end -}}
 
 <script src="{{$bunldeJS.Permalink}}"></script>
