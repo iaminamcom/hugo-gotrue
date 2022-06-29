@@ -8,6 +8,6 @@
 
 {{ printf `<style>
   %s
-</style>` ($styles | minify | resources.PostProcess).Content }}
+</style>` ($styles | minify | resources.PostProcess).Content | safeCSS}}
 
 {{ end -}}
