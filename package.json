@@ -21,6 +21,7 @@
     "not dead"
   ],
   "dependencies": {
-    "gotrue-js": "^0.9.29"
+    "gotrue-js": "^0.9.29",
+    "netlify-identity-widget": "^1.9.2"
   }
 }
