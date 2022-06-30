@@ -1,6 +1,6 @@
 baseURL: "/"
 taxonomies:
-title: 
+title: HMO-FLO
 # build and other other setup
 build:
   writeStats: true
