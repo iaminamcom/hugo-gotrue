@@ -1,5 +1,6 @@
-/* required styles */
+/* purgecss start ignore */
 
+/* required styles */
 .leaflet-pane,
 .leaflet-tile,
 .leaflet-marker-icon,
@@ -763,3 +764,5 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		color-adjust: exact;
 	}
 }
+
+/* purgecss end ignore */
