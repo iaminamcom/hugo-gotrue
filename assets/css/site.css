@@ -8,6 +8,12 @@
     transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
 }
 
-.netlify-identity-signup {
+.netlify-identity-signup,
+.netlify-identity-user-details {
     display: none;
+}
+
+.netlify-identity-logout,
+.netlify-identity-login {
+    @apply px-4 py-2 bg-white
 }
