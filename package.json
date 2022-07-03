@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "gotrue-js": "^0.9.29",
-    "netlify-identity-widget": "^1.9.2"
+    "netlify-identity-widget": "^1.9.2",
+    "node-fetch": "^2.6.7"
   }
 }
