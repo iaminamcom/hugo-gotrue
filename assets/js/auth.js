@@ -1,37 +1,11 @@
-// const loginDialog = document.getElementById('login-dialog'),
-//   loginForm = document.getElementById('login-form'),
-//   logoutBtn = document.getElementById('logout')
+const netlifyIdentity = require('netlify-identity-widget');
 
-// const storedUsername = localStorage.getItem('hm-username');
-// const storedPassword = localStorage.getItem('hm-password');
-// function isAlreadyLoggedIn() {
-//   if (storedPassword && storedUsername) {
-//     logoutBtn.hidden = false
-//     return true
-//   }
-//   loginDialog.showModal()
-//   return false
-// }
-// const isLoggedIn = isAlreadyLoggedIn()
+netlifyIdentity.init();
+const currentUser = netlifyIdentity.currentUser()
 
-// loginForm.onsubmit = async function (e) {
-//   e.preventDefault()
-//   const values = new FormData(e.target)
-//   const username = values.get('username')
-//   const password = values.get('password')
-
-//   const params = new URLSearchParams({ password, username }).toString()
-//   const response = await fetch('/.netlify/functions/auth/?' + params)
-//   const data = await response.json()
-//   console.log(data);
-
-//   localStorage.setItem('hm-username', username);
-//   localStorage.setItem('hm-password', password);
-//   location.reload()
-// }
-
-// logoutBtn.onclick = function () {
-//   localStorage.removeItem('hm-username')
-//   localStorage.removeItem('hm-password')
-//   location.reload()
-// }
+if (currentUser) {
+    runAfterAthorization(currentUser)
+    return
+}
+netlifyIdentity.open('login')
+netlifyIdentity.on('login', () => runAfterAthorization(currentUser));
