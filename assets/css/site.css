@@ -7,3 +7,7 @@
     /* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
     transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
 }
+
+.netlify-identity-signup {
+    display: none;
+}

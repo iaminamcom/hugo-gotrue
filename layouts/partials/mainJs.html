@@ -1,7 +1,8 @@
 {{- $leaflet := resources.Get "js/leaflet.js" }}
 {{- $markercluster := resources.Get "js/leaflet.markercluster.js" }}
 {{- $main := resources.Get "js/main.js" }}
-{{- $bunldeJS := slice $leaflet $markercluster $main }}
+{{- $auth := resources.Get "js/auth.js" }}
+{{- $bunldeJS := slice $auth $leaflet $markercluster $main }}
 
 {{- $bunldeJS = $bunldeJS | resources.Concat "js/bundle.js" | fingerprint | js.Build}}
 
