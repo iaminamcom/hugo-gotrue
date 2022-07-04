@@ -1,24 +1,32 @@
-const fetch = require('node-fetch')
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+const client = new MongoClient("mongodb+srv://web:PH5AqUBfNJRw3H7Q@scraper.qtquw.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 const handler = async function (event, context) {
   const { identity, user } = context.clientContext
+  const { NE, SW } = event.queryStringParameters
+  console.log(NE, SW);
   try {
-    // const response = await fetch('https://api.chucknorris.io/jokes/random');  if (!response.ok) return { statusCode: response.status, body: response.statusText }
 
-    const data = { value: '###' } // await response.json()
+    if (!user) {
+      return {
+        statusCode: 401, body: JSON.stringify({ message: 'You\'re not authorized.' }),
+      }
+    }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ identity, user, msg: data.value }),
-    }
-  } catch (error) {
-    // output to netlify function log
-    console.log(error)
-    return {
-      statusCode: 500,
-      // Could be a custom message or object i.e. JSON.stringify(err)
-      body: JSON.stringify({ msg: error.message }),
-    }
+    // await client.connect();
+    // const coll = client.db("scraped-data").collection("data");
+
+    const data = { value: '###' }
+
+    return { statusCode: 200, body: JSON.stringify({ identity, user, NE, SW }) }
+
+  } catch ({ message }) {
+    console.log(message)
+    return { statusCode: 500, body: JSON.stringify({ message }) }
+
+  } finally {
+    await client.close();
   }
 }
 
