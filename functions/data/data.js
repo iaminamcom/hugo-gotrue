@@ -5,6 +5,7 @@ const client = new MongoClient("mongodb+srv://web:PH5AqUBfNJRw3H7Q@scraper.qtquw
 const handler = async function (event, context) {
   const { identity, user } = context.clientContext
   const { NE, SW } = event.queryStringParameters
+
   console.log(NE, SW);
   try {
 
@@ -14,12 +15,11 @@ const handler = async function (event, context) {
       }
     }
 
-    // await client.connect();
-    // const coll = client.db("scraped-data").collection("data");
+    await client.connect();
+    const coll = client.db("scraped-data").collection("data");
+    const data = await coll.find({ "location.geometry": { $geoWithin: { $box: [NE.split(','), SW.split(',')] } } })
 
-    const data = { value: '###' }
-
-    return { statusCode: 200, body: JSON.stringify({ identity, user, NE, SW }) }
+    return { statusCode: 200, body: JSON.stringify({ data, NE, SW, user, }) }
 
   } catch ({ message }) {
     console.log(message)
