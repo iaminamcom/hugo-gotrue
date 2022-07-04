@@ -5,6 +5,7 @@ module.exports = {
       {
         useBuiltIns: "entry",
         corejs: 3,
+        targets: { node: "current" }
       },
     ],
   ],
