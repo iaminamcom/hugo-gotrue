@@ -9,17 +9,14 @@ const handler = async function (event, context) {
   console.log(NE, SW);
   try {
 
-    if (!user) {
-      return {
-        statusCode: 401, body: JSON.stringify({ message: 'You\'re not authorized.' }),
-      }
-    }
+    if (!user) return { statusCode: 401, body: JSON.stringify({ message: 'You\'re not authorized.' }) }
 
     await client.connect();
     const coll = client.db("scraped-data").collection("data");
-    const data = await coll.find({ "location.geometry": { $geoWithin: { $box: [NE.split(','), SW.split(',')] } } })
+    const coords = [SW.split(',').map(Number), NE.split(',').map(Number)]
+    const data = await coll.find({ "location.geometry": { $geoWithin: { $box: coords } } }).toArray()
 
-    return { statusCode: 200, body: JSON.stringify({ data, NE, SW, user, }) }
+    return { statusCode: 200, body: JSON.stringify({ data }) }
 
   } catch ({ message }) {
     console.log(message)
