@@ -30,7 +30,7 @@ function runAfterAthorization(token) {
       const response = await fetch(url, { headers: { authorization: `Bearer ${token.access_token}` } })
       const data = await response.json()
       const formattedData = data.data.map((e, i) => { return { coords: e.location.geometry.coordinates, id: e._id, index: i, img: e.images[0] } })
-      console.log(formattedData);
+      console.log(data);
 
       const addressPoints = [[-0.09, 51.505], [-0.09, 51.505], [-0.091, 51.505]];
       const markers = addMarkers(formattedData)
