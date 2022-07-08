@@ -1,10 +1,9 @@
 {{- $leaflet := resources.Get "js/leaflet.js" }}
 {{- $markercluster := resources.Get "js/leaflet.markercluster.js" }}
 {{- $main := resources.Get "js/main.js" }}
-{{- $auth := resources.Get "js/auth.js" }}
-{{- $bunldeJS := slice $auth $leaflet $markercluster $main }}
+{{- $bunldeJS := slice $leaflet $markercluster $main }}
 
-{{- $bunldeJS = $bunldeJS | resources.Concat "js/bundle.js" | fingerprint | js.Build}}
+{{- $bunldeJS = $bunldeJS | resources.Concat "js/bundle.js" | fingerprint }}
 
 {{- $babelConfig :="assets/js/babel.config.js" }}
 {{ if .Site.IsServer}}
