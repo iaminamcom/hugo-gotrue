@@ -1,10 +1,10 @@
-/* Tailwind base - put variables under: tailwind.config.js */
+/* purgecss start ignore */
 @import "node_modules/tailwindcss/base";
-/* Tailwind component classes registered by plugins*/
+/* purgecss end ignore */
 @import "node_modules/tailwindcss/components";
-/* Swiper lirary for slider */
+/* purgecss start ignore */
 @import "assets/css/leaflet.css";
 @import "assets/css/MarkerCluster.Default.css";
 @import "assets/css/site";
-/* Tailwind's utility classes - generated based on config file */
+/* purgecss end ignore */
 @import "node_modules/tailwindcss/utilities";
