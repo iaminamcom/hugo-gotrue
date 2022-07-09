@@ -1,5 +1,8 @@
 {{ define "main" }}
 <div class="py-12 container">
+    <div class="loader bg-white py-2" hidden>
+        <div role="status" class="animate-ping bg-red-500 rounded-full mx-auto w-2 h-2"></div>
+    </div>
     <div id="map" class="h-96 w-1/2"></div>
 </div>
 {{ end }}

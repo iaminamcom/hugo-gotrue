@@ -1,3 +1,6 @@
+const $ = (el) => document.querySelector(el)
+const loader = $('.loader');
+
 function addMarkers(array) {
   const markers = L.markerClusterGroup();
 
@@ -20,6 +23,7 @@ function runAfterAthorization(token) {
   );
   const map = L.map("map", { center, zoom, layers: [tiles] });
   map.on("moveend", getMarkers);
+  map.on('movestart', () => { $('.leaflet-left .leaflet-control').append(loader); loader.hidden = false })
 
   async function getMarkers(e) {
     const bounds = e.target.getBounds();
@@ -29,11 +33,13 @@ function runAfterAthorization(token) {
     try {
       const response = await fetch(url, { headers: { authorization: `Bearer ${token.access_token}` } })
       const data = await response.json()
+      if (!data.auth) { throw 'Authorization not working! Login again.' }
       console.log(data);
       const formattedData = data.data.map((e, i) => { return { coords: e.location.geometry.coordinates, id: e._id, index: i, img: e.images[0], name: e.Name } })
 
       const addressPoints = [[-0.09, 51.505], [-0.09, 51.505], [-0.091, 51.505]];
       const markers = addMarkers(formattedData)
+      loader.hidden = true
       map.addLayer(markers);
     } catch (error) {
       console.log(error)
