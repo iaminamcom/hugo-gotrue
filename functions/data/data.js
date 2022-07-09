@@ -6,7 +6,6 @@ const handler = async function (event, context) {
   const { identity, user } = context.clientContext
   const { NE, SW } = event.queryStringParameters
 
-  console.log(NE, SW);
   try {
 
     if (!user) return { statusCode: 401, body: JSON.stringify({ message: 'You\'re not authorized.' }) }

@@ -3,8 +3,8 @@ function addMarkers(array) {
 
   for (let i = 0; i < array.length; i++) {
     const a = array[i];
-    const marker = L.marker(new L.LatLng(a.coords[1], a.coords[0]), { title: "title" });
-    marker.bindPopup("<img src='" + a.img + "'/>", { minWidth: 200 });
+    const marker = L.marker(new L.LatLng(a.coords[1], a.coords[0]), { title: a.name });
+    marker.bindPopup("<img src='" + a.img + "?tr=w-156' width='100%' style='min-height:3rem'/><div><b>" + a.name + "</b></div>", { minWidth: 200 });
     markers.addLayer(marker);
   }
 
@@ -30,7 +30,7 @@ function runAfterAthorization(token) {
       const response = await fetch(url, { headers: { authorization: `Bearer ${token.access_token}` } })
       const data = await response.json()
       console.log(data);
-      const formattedData = data.data.map((e, i) => { return { coords: e.location.geometry.coordinates, id: e._id, index: i, img: e.images[0] } })
+      const formattedData = data.data.map((e, i) => { return { coords: e.location.geometry.coordinates, id: e._id, index: i, img: e.images[0], name: e.name } })
 
       const addressPoints = [[-0.09, 51.505], [-0.09, 51.505], [-0.091, 51.505]];
       const markers = addMarkers(formattedData)
